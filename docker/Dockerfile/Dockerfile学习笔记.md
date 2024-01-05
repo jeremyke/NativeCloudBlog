@@ -367,3 +367,29 @@ USER <UID>[:<GID>]
 ![img](./static/img_4.png)
 ![img](./static/img_5.png)
 ![img](./static/img_6.png)
+
+## 五、推送本地镜像到Dockerhub
+
+1. 登录dockerhub
+
+```shell
+docker login
+```
+
+2. 标记镜像
+
+```shell
+docker tag local_image_name:tag docker_hub_username/repository_name:tag
+```
+
+3. 推送到dockerhub
+
+```shell
+docker push docker_hub_username/repository_name:tag
+```
+
+4. 退出登录
+
+```shell
+docker logout
+```
