@@ -4,13 +4,14 @@ version: "3.0"
 # 第二层 服务
 services:
   php-nginx:
-    image: webdevops/php-nginx:7.4-alpine #镜像（dockhub）
+    image: webdevops/php-nginx:7.4-alpine #镜像
     ports:
-      - "2080:80"
+      - "2088:80"
     networks:
       - backend
     volumes:
-      - /root/www/html:/var/www/html/
+      - s_php-nginx_config:/opt/docker/etc
+      - s_php-nginx_www:/app
     depends_on:
       - redis
       - mysql
@@ -22,7 +23,7 @@ services:
       - backend
       - frontend
     volumes:
-      - /root/redis/data:/data
+      - s_redis_data:/data
     command: redis-server
   mysql:
     image: mysql:5.7
@@ -31,9 +32,9 @@ services:
     networks:
       - backend
     volumes:
-      - /root/mysql/conf:/etc/mysql/conf.d
-      - /root/mysql/logs:/logs
-      - /root/mysql/data:/var/lib/mysql
+      - s_mysql_conf:/etc/mysql/conf.d
+      - s_mysql_logs:/logs
+      - s_mysql_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root123
@@ -41,3 +42,10 @@ services:
 networks:
   frontend:
   backend:
+volumes:
+  s_php-nginx_config:
+  s_php-nginx_www:
+  s_redis_data:
+  s_mysql_conf:
+  s_mysql_logs:
+  s_mysql_data:
