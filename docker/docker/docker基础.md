@@ -3,6 +3,10 @@
 - 官方文档地址:https://www.docker.com/get-started
 
 - 中文参考手册:https://docker_practice.gitee.io/zh-cn/
+- 其他资料：
+  - https://yeasy.gitbook.io/docker_practice/
+  - https://developer.aliyun.com/article/931968
+  - https://blog.csdn.net/margu_168/article/details/131171289
 
 -----
 
